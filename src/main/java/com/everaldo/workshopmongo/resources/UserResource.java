@@ -1,6 +1,7 @@
 package com.everaldo.workshopmongo.resources;
 
 import com.everaldo.workshopmongo.domain.User;
+import com.everaldo.workshopmongo.dto.UserDTO;
 import com.everaldo.workshopmongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -20,10 +22,11 @@ public class UserResource {
     private UserService service;
 
     @RequestMapping(method=RequestMethod.GET)
-    public ResponseEntity< List<User>> findAll(){
+    public ResponseEntity< List<UserDTO>> findAll(){
 
         List<User> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
 
     }
 
