@@ -47,7 +47,6 @@ public class UserService {
             User user = newObj.get();
             return repo.save(user);
 
-
         }
 
     private void updateData(Optional<User> newObj, User obj) {
