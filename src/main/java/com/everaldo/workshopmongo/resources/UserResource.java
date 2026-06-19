@@ -1,5 +1,6 @@
 package com.everaldo.workshopmongo.resources;
 
+import com.everaldo.workshopmongo.domain.Post;
 import com.everaldo.workshopmongo.domain.User;
 import com.everaldo.workshopmongo.dto.UserDTO;
 import com.everaldo.workshopmongo.services.UserService;
@@ -75,6 +76,16 @@ public class UserResource {
         return ResponseEntity.noContent().build();
 
     }
+
+    @RequestMapping(value = "/{id}/posts", method=RequestMethod.GET)
+    public ResponseEntity< List<Post>> findPosts(@PathVariable String id){
+
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
+
+    }
+
+
 
 
 
