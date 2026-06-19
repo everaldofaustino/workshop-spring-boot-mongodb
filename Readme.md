@@ -1,6 +1,3 @@
-Com base nas imagens e nas informações fornecidas, preparei um README completo e detalhado para o seu projeto no GitHub.
-
----
 
 # 📚 Workshop Spring Boot com MongoDB
 
